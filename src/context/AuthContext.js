@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext'
+import authApi from '../services/auth'
 
 const authReducer = (state, action) => {
     switch (action.type) {
@@ -8,19 +9,25 @@ const authReducer = (state, action) => {
 }
 
 const login = (dispatch) => {
-    return({username, password}) => {
-        //test
+    return async ({email, password}) => {
+        try {
+            const response = await authApi.post("/auth/login", {email, password})
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
 const register = (dispatch) => {
     return ({ username, password }) => {
         //test
+        console.log(username);
     }
 }
 
-export const { Provider, Context } = createDataContext(
+export const { Context, Provider } = createDataContext(
     authReducer,
-    {login, register},
+    { login, register },
     { isSignedIn: false }
-)
+);

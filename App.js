@@ -33,39 +33,3 @@ export default () => {
     </AuthProvider>
   )
 }
-
-// export default function App() {
-
-//   const [termAct, setTermAct] = useState(false)
-//   const [inputTerm, setInputTerm] = useState('')
-//   const [greetingMsg, setGreetingMsj] = useState('')
-
-
-
-//   // const handleInput = (val) => {
-//   //   setTermAct(val)
-//   // }
-
-
-//   return (
-//     <View style={styles.container}>
-
-//       <TextInput onChangeText={val => setTermAct(val)} defaultValue={inputTerm} placeholder='adinizi daxil edin' />
-//       {/* {inputTerm && <Text>salam {inputTerm} bəy</Text>} */}
-//       {/* {greetingMsg.length > 0 && <Text>{greetingMsg}</Text>} */}
-//       <StatusBar style="auto" />
-//       <Button onPress={() => setTermAct(!termAct)} title={termAct ? 'hide number' : 'show number'} />
-//       {termAct && <Text>55 646 74 47</Text>}
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-
