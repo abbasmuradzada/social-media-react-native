@@ -9,10 +9,14 @@ import Home from './src/screens/HomeScreen'
 import Login from './src/screens/LoginScreen'
 import Register from './src/screens/RegisterScreen'
 import Create from './src/screens/CreateScreen'
+import DefaultScreen from './src/screens/DefaultScreen'
+
+import { setNavigator } from './src/navigationRef'
 
 import { Provider as AuthProvider } from './src/context/AuthContext'
 
 const switchNavigator = createSwitchNavigator({
+  DefaultScreen,
   authFlow: createStackNavigator({
     Login,
     Register,
@@ -29,7 +33,7 @@ const App = createAppContainer(switchNavigator)
 export default () => {
   return (
     <AuthProvider>
-      <App/>
+      <App ref={((navigator) => { setNavigator(navigator) })} />
     </AuthProvider>
   )
 }

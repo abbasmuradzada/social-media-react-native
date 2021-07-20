@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { View } from 'react-native'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { Context as AuthContext } from '../context/AuthContext'
@@ -43,6 +42,9 @@ const Login = ({ navigation }) => {
         <Spacer>
             <Button onPress={() => login({ email, password })} title='Login' />
         </Spacer>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={styles.navBetweenLoginRegister}>Don't have account? Register</Text>
+        </TouchableOpacity>
     </View>
 }
 
@@ -55,6 +57,11 @@ const styles = StyleSheet.create({
     errorMessage: {
         fontSize: 18,
         color: 'red'
+    },
+    navBetweenLoginRegister: {
+        textAlign: 'center',
+        fontSize: 14,
+        color: 'blue',
     }
 })
 
