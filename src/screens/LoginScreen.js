@@ -8,7 +8,7 @@ import { Context as AuthContext } from '../context/AuthContext'
 const Login = ({ navigation }) => {
 
     const { state, login } = useContext(AuthContext);
-    const [email, setEmail] = useState('hasannh@code.edu.az')
+    const [email, setEmail] = useState('murad@code.edu.az')
     const [password, setPassword] = useState('123456')
 
     return <View style={styles.container}>
@@ -22,22 +22,26 @@ const Login = ({ navigation }) => {
                 label='Email'
                 value={email}
                 onChangeText={setEmail}
-                autoCapitalize='none' 
-                autoCorrect = {false}
-                />
-        </Spacer>
-        <Spacer>
-            <Input 
-            label='Password'
+                autoCapitalize='none'
+                autoCorrect={false}
+            />
+            {/* </Spacer>
+        <Spacer> */}
+            <Input
+                label='Password'
                 value={password}
                 onChangeText={setPassword}
                 autoCapitalize='none'
                 autoCorrect={false}
                 secureTextEntry={true}
-                />
+            />
         </Spacer>
         <Spacer>
-            <Button onPress={() => login({email, password})} title='Login' />
+            {/* I can write also with && operator, but then there is an error  */}
+            {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null}
+        </Spacer>
+        <Spacer>
+            <Button onPress={() => login({ email, password })} title='Login' />
         </Spacer>
     </View>
 }
@@ -47,6 +51,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         marginBottom: 150,
+    },
+    errorMessage: {
+        fontSize: 18,
+        color: 'red'
     }
 })
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://localhost:5000/api",
+    // input you ip address
+    baseURL: "http://192.168.0.106:5000/api",
 });
