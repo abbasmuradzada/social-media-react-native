@@ -42,7 +42,6 @@ const login = (dispatch) => async ({ email, password }) => {
 
 const register = (dispatch) => {
     return ({ username, password }) => {
-        //test
         console.log(username);
     }
 }
@@ -51,6 +50,10 @@ const logout = (dispatch) => async () => {
     await AsyncStorage.removeItem('token');
     dispatch({type: 'logout'})
     navigate('authFlow')
+}
+
+export const returnToken = () => {
+    return AsyncStorage.removeItem('token');
 }
 
 
