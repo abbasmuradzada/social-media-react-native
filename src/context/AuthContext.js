@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createDataContext from './createDataContext'
-import authApi from '../services/auth'
+import globalService from '../services/auth'
 import { navigate } from '../navigationRef'
 
 
@@ -29,9 +29,10 @@ const autoLogin = dispatch => async () => {
 
 const login = (dispatch) => async ({ email, password }) => {
     try {
-        const response = await authApi.post("/auth/login", { email, password })
-        await AsyncStorage.setItem('token', response.data.user.token)
-        dispatch({ type: 'login', payload: response.data.user.token })
+        const response = await globalService.login({ email, password })
+        console.log(response);
+        await AsyncStorage.setItem('token', response.token)
+        dispatch({ type: 'login', payload: response.token })
         navigate('Home')
     } catch (error) {
         dispatch({ type: 'add_error', payload: 'Something went wrong in Login' })
@@ -50,6 +51,7 @@ const logout = (dispatch) => async () => {
     await AsyncStorage.removeItem('token');
     dispatch({type: 'logout'})
     navigate('authFlow')
+    AsyncStorage.getItem('token');
 }
 
 export const returnToken = () => {
