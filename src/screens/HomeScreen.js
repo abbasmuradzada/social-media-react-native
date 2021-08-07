@@ -14,7 +14,6 @@ const Home = () => {
         globalService.getAllPosts()
             .then((res) => {
                 setPosts(res.data.posts);
-                console.log(res.data.posts);
             })
             .catch((err) => {
                 console.log(err);

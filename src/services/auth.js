@@ -40,6 +40,18 @@ const globalService = {
                 });
         });
     },
+    getOwnUser() {
+        return new Promise((resolve, reject) => {
+            axios
+                .get("/user/ownProfile")
+                .then((res) => {
+                    resolve(res);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    },
 }
 
 export default globalService
